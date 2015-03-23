@@ -60,7 +60,7 @@ Vagrant.configure("2") do |config|
   # enter a password for Vagrant to access your hosts file.
   if defined?(VagrantPlugins::Ghost)
     # Pass the found host names to the Ghost plugin so it can perform magic.
-    config.ghost.aliases = 'jenkins.dev' if defined?(VagrantPlugins::Ghost)
+    config.ghost.aliases = ['jenkins.dev'] if defined?(VagrantPlugins::Ghost)
   end
 
   # Forward Agent
