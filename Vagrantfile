@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ericmann/trusty64"
 
   # Default Hostname
-  config.vm.hostname = "itinerant_jenkins"
+  config.vm.hostname = "itinerant-jenkins"
 
   # Forward certain ports from the guest to the host
   config.vm.network "forwarded_port", guest: 3306, host: 23306
