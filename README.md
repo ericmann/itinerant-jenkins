@@ -7,6 +7,14 @@ Ansible is used internally for two reasons:
 1. To allow Windows hosts to share in the Ansible-provisioning love
 1. To empower developers who want to use the _same_ provisioning script on a production machine somewhere in the cloud
 
+## Requirements
+
+An optional requirement is to install the [vagrant-ghost](https://github.com/10up/vagrant-ghost) plugin to allow Vagrant to manage your hostsfile for you:
+
+    vagrant plugin install vagrant-ghost
+
+If you forgo this plugin, you'll need to manually update your hosts file to point `jenkins.dev` at your new VM.
+
 ## What you get
 
 - Ubuntu 14.04
@@ -15,6 +23,8 @@ Ansible is used internally for two reasons:
 - PHP 5.6 (CLI)
 - Composer (for package management)
 - PHPUnit (for project tests)
+
+Once `vagrant up` has finished doing it's thing, you can access Jenkins at http://jenkins.dev:8080.
 
 ## Thanks
 
