@@ -23,4 +23,4 @@ Ansible is used internally for two reasons:
 
 ## Release History
 
- * 2015-03-23    v1.0.0    Initial release
+ * 2015-03-23     v1.0.0     Initial release
