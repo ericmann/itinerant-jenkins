@@ -66,9 +66,5 @@ chmod 644 /vagrant/provision/hosts
 # More continuous scroll of the Ansible standard output buffer
 export PYTHONUNBUFFERED=1
 
-# Install the Jenkins role.
-ansible-galaxy install geerlingguy.java
-ansible-galaxy install geerlingguy.jenkins
-
 # $ANS_BIN /vagrant/provision/playbook.yml -i /vagrant/provision/hosts
 $ANS_BIN /vagrant/provision/playbook.yml -i'127.0.0.1,'

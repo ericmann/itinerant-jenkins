@@ -1,11 +1,4 @@
 ---
-- name: Add Java repository key
-  apt_key:
-    id: "EEA14886"
-    url: ""
-    state: present
-  tags: [ 'java' ]
-
 - name: Enable Software Properties Common
   apt: pkg=software-properties-common state=present update_cache=yes
   tags: [ 'java' ]
