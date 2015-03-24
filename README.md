@@ -21,8 +21,6 @@ Ansible is used internally for two reasons:
 - [10up](http://10up.com) for Ansible provisioning inspiration
 - [Digital Ocean](https://www.digitalocean.com) for Jenkins installation how-tos
 
-## Changelog
+## Release History
 
-** 1.0.0 **
-
-- Initial release
+ * 2015-03-23   v1.0.0  Initial release
