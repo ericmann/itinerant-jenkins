@@ -1,0 +1,29 @@
+---
+- name: Add Java repository key
+  apt_key:
+    id: "EEA14886"
+    url: ""
+    state: present
+  tags: [ 'java' ]
+
+- name: Enable Software Properties Common
+  apt: pkg=software-properties-common state=present update_cache=yes
+  tags: [ 'java' ]
+
+- name: Enable Java repository
+  apt_repository:
+    repo: 'ppa:webupd8team/java'
+    state: present
+    update_cache: yes
+  tags: [ 'java' ]
+
+- name: Accept JAva License
+  shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+  tags: [ 'java' ]
+
+- name: Install Java
+  apt: name={{ item }} state=present
+  with_items:
+    - oracle-java8-installer
+    - ca-certificates
+  tags: [ 'java' ]

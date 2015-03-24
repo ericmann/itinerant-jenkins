@@ -1,9 +1,10 @@
 ---
 - hosts: all
-  gather_facts: yes
-  vars_files:
-    - vars/main.yml
+  connection: local
+  sudo: yes
 
   roles:
-    - geerlingguy.java
-    - geerlingguy.jenkins
+    - php
+    - common
+    - java
+    - jenkins

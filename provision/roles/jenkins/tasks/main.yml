@@ -1,0 +1,20 @@
+---
+- name: Add Jenkins key
+  apt_key:
+    url: "http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key"
+    state: present
+  tags: [ 'jenkins' ]
+
+- name: Enable Jenkins repository
+  apt_repository:
+    repo: 'deb http://pkg.jenkins-ci.org/debian binary'
+    state: present:
+    update_cache: yes
+  tags: [ 'jenkins' ]
+
+- name: Install Jenkins
+  apt:
+    name: jenkins
+    state: present
+  notify: jenkins restart
+  tags: [ 'jenkins' ]
