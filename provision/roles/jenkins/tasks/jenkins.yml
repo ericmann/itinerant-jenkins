@@ -17,5 +17,6 @@
   apt:
     name: jenkins
     state: present
+  register: jenkins_install
   notify: jenkins restart
   tags: [ 'jenkins' ]
