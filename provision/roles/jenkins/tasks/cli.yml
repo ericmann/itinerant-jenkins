@@ -1,0 +1,28 @@
+---
+- name: Delay while starting Jenkins
+  wait_for: host=localhost port=8080 delay=10
+  when: jenkins_install.changed
+  tags: [ 'jenkins-cli' ]
+
+- name: Create Jenlins CLI destination directory
+  file: path=/opt/jenkins state=directory
+  tags: [ 'jenkins-cli' ]
+
+- name: Get Jenkins CLI
+  get_url: url=http://localhost:8080/jnlpJars/jenkins-cli.jar dest=/opt/jenkins/jenkins-cli.jar mode=0440
+  register: jenkins_local_cli
+  until: "'OK' in jenkins_local_cli.msg or 'file already exists' in jenkins_local_cli.msg"
+  retries: 5
+  delay: 10
+  tags: [ 'jenkins-cli' ]
+
+- name: Get Jenkins updates
+  get_url: url=http://updates.jenkins-ci.org/update-center.json dest=/opt/jenkins/updates_jenkins.json thirsty=yes mode=0440 timeout=30
+  register: jenkins_updates
+  tags: [ 'jenkins-cli' ]
+
+- name: Update-center Jenkins
+  shell: "cat /opt/jenkins/updates_jenkins.json | sed '1d;$d' | curl -X POST -H 'Accept: application/json' -d @- http://localhost:8080/updateCenter/byId/default/postBack"
+  when: jenkins_updates.changed
+  notify: jenkins restart
+  tags: [ 'jenkins-cli' ]

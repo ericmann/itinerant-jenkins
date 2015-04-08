@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
 
   # Custom details for Virtualbox if using it as a provider
   config.vm.provider :virtualbox do |v, override|
-    v.customize ["modifyvm", :id, "--memory", 1024]
+    v.customize ["modifyvm", :id, "--memory", 512]
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
 
@@ -35,11 +35,16 @@ Vagrant.configure("2") do |config|
   end
 
   # Custom details for Hyper-V if using it as a provider
-  config.vm.provider :hyperv do |v|
-    #v.memory = 1024
+  config.vm.provider :hyperv do |v, override|
+    override.vm.network :private_network
 
-    # Name the vm
-    #v.vmname = "Itinerant_Jenkins"
+    if vagrant_version >= "1.7.3"
+      v.memory = 512
+
+      # Name the vm
+      v.vmname = "Itinerant_Jenkins"
+    end
+
   end
 
   # Default Ubuntu Box
@@ -60,7 +65,7 @@ Vagrant.configure("2") do |config|
   # enter a password for Vagrant to access your hosts file.
   if defined?(VagrantPlugins::Ghost)
     # Pass the found host names to the Ghost plugin so it can perform magic.
-    config.ghost.aliases = ['jenkins.dev'] if defined?(VagrantPlugins::Ghost)
+    config.ghost.aliases = ['jenkins.dev']
   end
 
   # Forward Agent
