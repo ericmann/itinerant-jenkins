@@ -34,4 +34,5 @@ Once `vagrant up` has finished doing it's thing, you can access Jenkins at http:
 
 ## Release History
 
+ * 2015-04-09   v1.1.0   Add plugins and XDebug support
  * 2015-03-23   v1.0.0   Initial release
