@@ -53,10 +53,6 @@ Vagrant.configure("2") do |config|
   # Default Hostname
   config.vm.hostname = "itinerant-jenkins"
 
-  # Forward certain ports from the guest to the host
-  config.vm.network "forwarded_port", guest: 3306, host: 23306
-  config.vm.network "forwarded_port", guest: 11211, host: 21211
-
   # Local Machine Hosts
   #
   # If the Vagrant plugin Ghost (https://github.com/10up/vagrant-ghost) is
@@ -65,7 +61,7 @@ Vagrant.configure("2") do |config|
   # enter a password for Vagrant to access your hosts file.
   if defined?(VagrantPlugins::Ghost)
     # Pass the found host names to the Ghost plugin so it can perform magic.
-    config.ghost.aliases = ['jenkins.dev']
+    config.ghost.hosts = ['jenkins.dev']
   end
 
   # Forward Agent
