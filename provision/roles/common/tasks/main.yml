@@ -32,3 +32,15 @@
 - name: Ensure PHPUnit is executable
   file: path=/usr/local/bin/phpunit mode=a+x state=file
   tags: [ 'common', 'phpunit' ]
+
+- name: Install phpDocumentor into the current directory
+  get_url: url=http://phpdoc.org/phpDocumentor.phar dest=/tmp/phpDocumentor.phar
+  tags: [ 'common', 'phpdoc' ]
+
+- name: Rename phpDocumentor
+  shell: mv /tmp/phpDocumentor.phar /usr/local/bin/phpdoc creates=/usr/local/bin/phpdoc
+  tags: [ 'common', 'phpdoc' ]
+
+- name: Ensure phpDocumentor is executable
+  file: path=/usr/local/bin/phpdoc mode=a+x state=file
+  tags: [ 'common', 'phpdoc' ]
