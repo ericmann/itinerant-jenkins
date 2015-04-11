@@ -4,9 +4,6 @@
 dir = Dir.pwd
 vagrant_dir = File.expand_path(File.dirname(__FILE__))
 
-# Map any directores we need into the VM
-FileUtils.mkdir_p( vagrant_dir + '/logs' )
-
 Vagrant.configure("2") do |config|
 
   # Store the current version of Vagrant for use in conditionals when dealing
@@ -69,16 +66,6 @@ Vagrant.configure("2") do |config|
   # Enable agent forwarding on vagrant ssh commands. This allows you to use ssh keys
   # on your host machine inside the guest. See the manual for `ssh-add`.
   config.ssh.forward_agent = true
-
-  # Drive mapping
-  #
-  # The following config.vm.synced_folder settings will map directories in your Vagrant
-  # virtual machine to directories on your local machine. Once these are mapped, any
-  # changes made to the files in these directories will affect both the local and virtual
-  # machine versions. Think of it as two different ways to access the same file. When the
-  # virtual machine is destroyed with `vagrant destroy`, your files will remain in your local
-  # environment.
-  config.vm.synced_folder "logs", "/srv/logs", owner: "www-data", group: "www-data"
 
   # Customfile - POSSIBLY UNSTABLE
   #
