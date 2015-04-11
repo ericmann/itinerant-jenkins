@@ -22,10 +22,12 @@ If you forgo this plugin, you'll need to manually update your hosts file to poin
 - Java 8
 - Jenkins
 - PHP 5.6 (CLI)
+- XDebug
 - Composer (for package management)
 - PHPUnit (for project tests)
+- phpDocumentor (for project documentation)
 
-Once `vagrant up` has finished doing it's thing, you can access Jenkins at http://jenkins.dev:8080.
+Once `vagrant up` has finished doing it's thing, you can access Jenkins at [http://jenkins.dev:8080](http://jenkins.dev:8080).
 
 ## Thanks
 
@@ -34,5 +36,6 @@ Once `vagrant up` has finished doing it's thing, you can access Jenkins at http:
 
 ## Release History
 
- * 2015-04-09   v1.1.0   Add plugins and XDebug support
+ * 2015-04-10   v1.1.1   Add global phpDocumentor support
+ * 2015-04-08   v1.1.0   Add plugins and XDebug support
  * 2015-03-23   v1.0.0   Initial release
