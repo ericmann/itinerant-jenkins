@@ -1,6 +1,6 @@
 ---
-- name: Delay while starting Jenkins
-  wait_for: host=localhost port=8080 delay=10
+- name: Delay for 30s while starting Jenkins
+  wait_for: host=localhost port=8080 delay=30
   when: jenkins_install.changed
   tags: [ 'jenkins-cli' ]
 
