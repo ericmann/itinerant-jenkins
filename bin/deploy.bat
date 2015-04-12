@@ -31,6 +31,9 @@ ssh -t %connection% 'dos2unix scripts/remote-provision.sh'
 REM Fire the provision script so we can build the server
 ssh -t %connection% 'sudo scripts/remote-provision.sh'
 
+REM Remove remote execution scripts
+ssh -t %connection% 'rm -rf provision scripts'
+
 goto End
 
 :Fail
