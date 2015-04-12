@@ -23,7 +23,7 @@
   tags: [ 'common', 'composer' ]
 
 - name: Install PHPUnit into the current directory
-  get_url: url=https://phar.phpunit.de/phpunit.phar dest=/tmp/phpunit.phar
+  get_url: url=https://phar.phpunit.de/phpunit-4.6.2.phar dest=/tmp/phpunit.phar
   tags: [ 'common', 'phpunit' ]
 
 - name: Rename PHPUnit
